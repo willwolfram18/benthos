@@ -21,6 +21,7 @@ type Config struct {
 	Type   string       `json:"type" yaml:"type"`
 	Jaeger JaegerConfig `json:"jaeger" yaml:"jaeger"`
 	None   struct{}     `json:"none" yaml:"none"`
+	Otlp   OtlpConfig   `json:"otlp" yaml:"otlp"`
 }
 
 // NewConfig returns a configuration struct fully populated with default values.
@@ -29,6 +30,7 @@ func NewConfig() Config {
 		Type:   "none",
 		Jaeger: NewJaegerConfig(),
 		None:   struct{}{},
+		Otlp:   NewOtlpConfig(),
 	}
 }
 
