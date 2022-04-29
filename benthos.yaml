@@ -1,0 +1,24 @@
+input:
+  http_server:
+    address: ""
+    path: /do
+    allowed_verbs:
+      - GET
+    timeout: 5s
+    sync_response:
+      status: 200
+
+
+pipeline:
+  processors:
+    - bloblang: |
+        root = {}
+        root.timestamp = now()
+
+output:
+  stdout:
+    codec: lines
+
+tracer:
+  jaeger:
+    collector_url: "http://localhost:14268/api/traces"
